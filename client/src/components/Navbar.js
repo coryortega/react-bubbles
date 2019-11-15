@@ -5,7 +5,6 @@ function NavBar() {
 
     return (
         <div className="Navbar">
-          {/* <button onClick = {() => localStorage.clear()}>clear storage</button> */}
           <ul>
             <p>
               <Link to="/login">Login</Link>

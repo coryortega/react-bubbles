@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { axiosWithAuth } from "./axiosAuth"
 
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
@@ -11,23 +12,12 @@ function BubblePage() {
 
 const [colorList, setColorList] = useState([])
 
-    axios.get("http://localhost:5000/api/colors", {
-        headers: { authorization: localStorage.getItem("token") }
-    })
-        .then(response => {setColorList(response.data)
-        });
+
+
+useEffect(() => {
+    axiosWithAuth().get("http://localhost:5000/api/colors").then(response => {setColorList(response.data)})
+      },[])
     
-// const handleDelete = (id) => {
-
-//         axios.delete(`http://localhost:5000/api/friends/${id}`,
-//         {
-//             headers: { authorization: localStorage.getItem("token") }
-//             }) .then(res => { 
-//             console.log(res);
-//         })
-//         .catch(err => console.log(err.response));
-//     }
-
     return (
       <>
       <ColorList colors={colorList} updateColors={setColorList} />

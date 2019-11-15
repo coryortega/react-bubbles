@@ -14,9 +14,6 @@ function NavBar() {
               <Link to="/bubblepage">Bubbles!</Link>
             </p>
             <p>
-              <Link to="/form">Add Friends</Link>
-            </p>
-            <p>
              <Link onClick = {() => localStorage.clear()} to="/login">Log Out</Link>   
             </p>
           </ul>

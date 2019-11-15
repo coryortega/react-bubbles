@@ -33,6 +33,7 @@ class Login extends React.Component {
 
         localStorage.setItem("token", data.payload);
         this.setState({ ...this.state, isLoggedIn: true });
+        this.props.history.push('/bubblepage');
       });
   };
 

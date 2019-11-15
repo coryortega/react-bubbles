@@ -5,7 +5,8 @@ import { axiosWithAuth } from "./axiosAuth"
 
 const initialColor = {
   color: "",
-  code: { hex: "" }
+  code: { hex: "" },
+  id: Date.now()
 };
 
 const ColorList = ({ colors, updateColors }) => {
@@ -23,11 +24,11 @@ const ColorList = ({ colors, updateColors }) => {
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
-
     axiosWithAuth().put(`http://localhost:5000/api/colors/${colorToEdit.id}`, colorToEdit)
-    .then(updateColors([...colors, {...colors, color : colorToEdit.color, code : colorToEdit.code}]))
+    .then(updateColors(
+      // colors.filter(ye => ye.id !== colorToEdit.id),
+      [...colors, {...colors, color : colorToEdit.color, code : colorToEdit.code, id: Date.now()}]))
     .catch(err => console.log(err));
-
   };
 
 

@@ -25,11 +25,17 @@ const ColorList = ({ colors, updateColors }) => {
     // where is is saved right now?
     axiosWithAuth().put(`http://localhost:5000/api/colors/${colorToEdit.id}`, colorToEdit)
     .then(updateColors(
-      // colors.filter(ye => ye.id !== colorToEdit.id),
-      [...colors, {...colors, color : colorToEdit.color, code : colorToEdit.code, id: Date.now()}]))
+      colors.map(e => {
+        if(e.id === colorToEdit.id){
+          return colorToEdit
+        }
+        else {
+          return e
+        }
+      }),
+      [...colors, {color : colorToEdit.color, code : colorToEdit.code, id: Date.now()}]))
     .catch(err => console.log(err));
   };
-
 
   const deleteColor = color => {
     // make a delete request to delete this color

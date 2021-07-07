@@ -49,6 +49,20 @@ body,
   }
 }
 
+.Navbar {
+  width: 15%;
+  background: gray;
+}
+
+.Navbar ul {
+  margin: 0%;
+  padding: 0%;
+}
+.Navbar ul p a {
+  color: white;
+  text-decoration: none;
+}
+
 .delete {
   color: rgb(216, 87, 87);
 }
